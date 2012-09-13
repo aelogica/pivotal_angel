@@ -16,6 +16,8 @@ Gem::Specification.new do |gem|
   gem.version       = PivotalAngel::VERSION
 
   gem.add_development_dependency "rspec", "~> 2.6"
+  gem.add_development_dependency "webmock"
 
+  gem.add_dependency "happymapper"
   gem.add_dependency "pivotal-tracker", "~> 0.5.4"
 end

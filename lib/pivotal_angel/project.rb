@@ -1,6 +1,36 @@
 module PivotalAngel
   class Project
+    include HappyMapper
+
+    element :id, Integer
+    element :name, String
+    element :account, String
+    element :week_start_day, String
+    element :point_scale, String
+    element :labels, String
+    element :velocity_scheme, String
+    element :iteration_length, Integer
+    element :initial_velocity, Integer
+    element :current_velocity, Integer
+    element :last_activity_at, DateTime
+    element :use_https, Boolean
+    element :first_iteration_start_time, DateTime
+    element :current_iteration_number, Integer
+
     class << self
+      attr_writer :token
+
+      def find(id)
+        require 'net/http'
+        http = Net::HTTP.new('www.pivotaltracker.com')
+        headers = {
+          "X-TrackerToken" => @token,
+          "Accept"         => "application/xml",
+          "Content-type"   => "application/xml"
+        }
+        parse(http.request(Net::HTTP::Get.new("/services/v3/projects/#{id}", headers)).body)
+      end
+
       def deep_clone(source_project, name)
         new_project = PivotalTracker::Project.new name: name,
                                                   iteration_length: source_project.iteration_length,

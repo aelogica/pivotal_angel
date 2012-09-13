@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <id>1</id>
+  <name>Primrose</name>
+  <iteration_length type="integer">1</iteration_length>
+  <point_scale>0,1,2,3</point_scale>
+</project>
