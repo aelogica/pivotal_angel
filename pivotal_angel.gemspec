@@ -15,7 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = PivotalAngel::VERSION
 
+  gem.add_development_dependency "rake"
   gem.add_development_dependency "rspec", "~> 2.6"
 
-  gem.add_dependency "pivotal-tracker", "~> 0.5.4"
+  gem.add_dependency "pivotal-tracker", "~> 0.5"
 end
